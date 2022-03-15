@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.Epre.RRHH.EpreRrhhApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 38.454 s - in com.Epre.RRHH.EpreRrhhApplicationTests

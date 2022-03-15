@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <main>
+        <section class="form-register">
+            <article>
+                <div class="form">
+                    
+                    <h1>Carnet de Socio</h1>
+                    <img class="logo__club" src="/assets/escudo.png" alt="logo de talleres">
+                    <img class="foto_usuario" th:src="${'/foto/persona?id='}+${persona.id}" alt="logo de talleres">
+                    <div class="descripcion">
+                        <p class ="descripcion__producname">Nombre y Apellido: <span class="descripcion__producname1" th:text="${persona.apellido} + ' ' + ${persona.nombre}"></span></p>
+                        <p class ="descripcion__produc">N de Socio: <span class="descripcion__produc1" th:text="'000000' + ${persona.legajo}"></span></p>
+                        <p class ="descripcion__produc">Fecha de incorporacion: <span class="descripcion__produc1" th:text="${#dates.format(jugador.fechaNacimiento, 'dd/MM/yyyy')}"></span></p>
+                        <p class ="descripcion__produc">Estado: <span class="descripcion__produc1" th:text="${persona.acceso}"></span></p>
+                        <p class ="descripcion__produc">Años en la empresa: <span class="descripcion__produc1" th:text="'00' + ${persona.anios}"></span></p>
+                        <p class ="descripcion__produc">Dias de vacaciones: <span class="descripcion__produc1" th:text="'00' + ${persona.dias}"></span></p>
+                        <p class ="descripcion__produc">Dias disponibles: <span class="descripcion__produc1" th:text="'00' + ${persona.diasDisponibles}"></span></p>
+                        <p class ="descripcion__produc">Detalles de vacaciones: <span class="descripcion__producname1" th:text="${persona.detalles}"></span></p>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+    <script src="/main.js"></script>
+    </body>
+</html>

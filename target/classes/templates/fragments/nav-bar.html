@@ -1,0 +1,26 @@
+<header>
+    <nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark bg-background-color:#027b90">
+        <div class="container-fluid">
+            
+           <div class="logo">
+            <a href="/" class="logo">
+                <img src="/assets/descarga.jpg" class="imagen__logo">
+            </a>
+            </div>
+            <a class="navbar-brand" sec:authorize="!isAuthenticated()" th:href="@{/login}">Ingresar</a>
+            <a class="navbar-brand" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/panel-admin}">Panel de Control</a>
+            <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesion</a>
+            <a class="navbar-brand" sec:authorize="!isAuthenticated()" th:href="@{/usuario/registro}">Registrarse</a>
+            <a sec:authorize="hasRole('ROLE_PERSONAL')">
+                <a sec:authorize="!hasRole('ROLE_ADMIN')"
+                    th:href="@{/socio/carnet(id=__${session.usuariosession.id}__)}" class="nav__items--cta"><i
+                        class="fas fa-id-card" style="margin-right: 5px;"></i>Carnet Digital</a>
+            </a>
+            <div sec:authorize="isAuthenticated()">
+            <a sec:authorize="!hasRole('ROLE_USER')"
+                th:href="@{/usuario/asociarse(id=__${session.usuariosession.id}__)}" class="nav__items--cta"><i
+                    class="fas fa-user-check" style="margin-right: 5px;"></i>Asociarse</a>
+        </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+    <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <header>
+            <nav th:replace="/fragments/nav-bar :: nav"></nav>
+        </header>
+        <div class="container">
+            <div th:if="${error}" class="alert alert-warning" mt-3 role="alert">
+                <span th:text="${error}"> </span>
+            </div>
+            <div th:if="${success}" class="alert alert-success" role="alert">
+                <span th:text="${success}"> </span>
+            </div>
+            <div class="card">
+                <div class="card-header d-flex mt-5">
+                    <h1 id="crearpersona">Crear una cuenta</h1>
+                    <button sec:authorize="hasRole('ROLE_ADMIN')" class="btn-dark px-5 py-2 ms-auto"><a th:href="@{/persona/list}">Lista de personas</a></button>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/usuario/personaregistrada}" method="POST" th:object="${perfil}" class="col-6 mx-auto">
+                        <input hidden th:field="*{id}">
+                        
+                        <div class="mb-3">
+                            <label for="legajo" class="form-label">Nº de Legajo</label>
+                            <input type="text" id="legajo" name="legajo" class="form-control" th:field="*{legajo}" placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" id="apellido" name="apellido" class="form-control" th:field="*{apellido}" placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" th:field="*{nombre}" placeholder="Rodrigo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="edad" class="form-label">Fecha de ingreso a la empresa</label>
+                            <input type="date" id="fechaDeIngreso" name="fechaDeIngreso" class="form-control" th:field="*{fechaDeIngreso}" placeholder="28">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Años en la empresa</label>
+                            <input type="number" cid="anios" name="anios" lass="form-control" th:field="*{anios}" placeholder="Rodrigo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Dias de vacaciones</label>
+                            <input type="number" id="dias" name="dias" class="form-control" th:field="*{dias}" placeholder="Rodrigo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Dias disponibles</label>
+                            <input type="number" id="diasDisponibles" name="diasDisponibles" class="form-control" th:field="*{diasDisponibles}" placeholder="Rodrigo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Detalles de vacaciones</label>
+                            <input type="text" id="detalles" name="detalles" class="form-control" th:field="*{detalles}" placeholder="Rodrigo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ciudad" class="form-label">Estado del empleado</label>
+                            <select class="form-select" th:field="*{estado.id}" >
+                                <option th:each="c : ${#lists.sort(estados)}" th:text="${c.estado}" th:value="${c.id}"></option>
+                            </select>
+                        </div>
+                        
+                        
+                        <button class="btn-dark px-5 py-2 ms-auto">Finalizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

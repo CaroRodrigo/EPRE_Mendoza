@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <header>
+            <nav th:replace="/fragments/nav-bar :: nav"></nav>
+        </header>
+        <div class="container">
+            <div class="card">
+                <div class="card-header d-flex mt-5">
+                    <h1>Crear Estado</h1>
+                    <button class="btn-dark px-5 py-2 ms-auto"><a th:href="@{/estado/list}">Estado de empleados</a></button>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/estado/save}" method="POST" th:object="${estado}" class="col-6 mx-auto">
+                        <input hidden th:field="*{id}">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre del estado a agregar</label>
+                            <input type="text" class="form-control" th:field="*{estado}" placeholder="Cordoba">
+                        </div>
+                        <button class="btn-dark px-5 py-2 ms-auto">Guardar</a></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
